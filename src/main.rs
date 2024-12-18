@@ -1,3 +1,6 @@
+// This shi distracting me istg bro
+#![allow(dead_code, unused_variables)]
+
 mod bot;
 
 use anyhow::Context;

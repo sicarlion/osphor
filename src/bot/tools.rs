@@ -1,1 +1,3 @@
-pub mod logger;
+pub mod log;
+
+pub use log::OsphorLog;
