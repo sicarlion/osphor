@@ -2,13 +2,12 @@
 #![allow(dead_code, unused_variables)]
 
 mod bot;
+mod tools;
 
 use anyhow::Context;
 use poise::serenity_prelude::GuildId;
 use shuttle_runtime::SecretStore;
 use shuttle_serenity::ShuttleSerenity;
-
-use bot::start;
 
 // User Interaction Data will be stored temporarily here
 struct Data {}
@@ -36,5 +35,5 @@ async fn main(#[shuttle_runtime::Secrets] secret_store: SecretStore) -> ShuttleS
     };
 
     // Start the logic on bot.rs
-    start(bot).await
+    Bot::start(bot).await
 }

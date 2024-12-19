@@ -1,7 +1,6 @@
 use poise::serenity_prelude::{ChannelId, Context, Error, GuildId, MessageId};
 
-use crate::bot::tools::*;
-use log::OsphorLog;
+use crate::tools::OsphorLog;
 
 // Called everytime a message is deleted.
 pub async fn on_delete(
