@@ -1151,6 +1151,8 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "poise",
+ "serde",
+ "serde_json",
  "shuttle-runtime",
  "shuttle-serenity",
  "tokio",

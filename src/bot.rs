@@ -10,14 +10,14 @@ use crate::Data;
 use crate::bot::commands::*;
 use crate::bot::handler::*;
 
-type InteractionError = Box<dyn std::error::Error + Send + Sync>;
-type InteractionContext<'a> = poise::Context<'a, Data, InteractionError>;
+pub type InteractionError = Box<dyn std::error::Error + Send + Sync>;
+pub type InteractionContext<'a> = poise::Context<'a, Data, InteractionError>;
 
 impl Bot {
     pub async fn start(bot: Bot) -> ShuttleSerenity {
         // Store all the slash command here. Make sure all module in commands.rs is properly connected.
         let commands_list = vec![
-            Ping::new(), Help::new(), Fetch::new()
+            Ping::new(), Help::new(), Test::new(), Fetch::new()
         ];
 
         // Poise framework builder.
