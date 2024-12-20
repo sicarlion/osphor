@@ -1,7 +1,7 @@
 pub mod commands;
 pub mod handler;
 
-use poise::serenity_prelude::{ClientBuilder, FullEvent, GatewayIntents, GuildId};
+use poise::serenity_prelude::{ClientBuilder, FullEvent, GatewayIntents};
 use shuttle_serenity::ShuttleSerenity;
 
 use crate::Bot;
