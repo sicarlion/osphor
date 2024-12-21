@@ -1,5 +1,6 @@
 use crate::bot::{InteractionContext, InteractionError};
 use crate::tools::{Config, Replies, Exception};
+
 use poise::serenity_prelude::CreateEmbed;
 
 #[poise::command(

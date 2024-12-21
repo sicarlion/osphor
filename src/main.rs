@@ -4,10 +4,11 @@
 mod bot;
 mod tools;
 
-use anyhow::Context;
 use poise::serenity_prelude::GuildId;
 use shuttle_runtime::SecretStore;
 use shuttle_serenity::ShuttleSerenity;
+
+use anyhow::Context;
 
 // User Interaction Data will be stored temporarily here
 struct Data {}

@@ -1,7 +1,8 @@
-use anyhow::Error;
+use crate::bot::InteractionContext;
+
 use poise::{serenity_prelude::CreateEmbed, CreateReply};
 
-use crate::bot::InteractionContext;
+use anyhow::Error;
 
 pub struct Replies {}
 pub enum Exception {

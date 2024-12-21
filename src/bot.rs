@@ -1,14 +1,14 @@
 pub mod commands;
 pub mod handler;
 
-use poise::serenity_prelude::{ClientBuilder, FullEvent, GatewayIntents};
-use shuttle_serenity::ShuttleSerenity;
-
 use crate::Bot;
 use crate::Data;
 
 use crate::bot::commands::*;
 use crate::bot::handler::*;
+
+use poise::serenity_prelude::{ClientBuilder, FullEvent, GatewayIntents};
+use shuttle_serenity::ShuttleSerenity;
 
 pub type InteractionError = Box<dyn std::error::Error + Send + Sync>;
 pub type InteractionContext<'a> = poise::Context<'a, Data, InteractionError>;

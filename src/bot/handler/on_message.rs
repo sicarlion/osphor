@@ -1,6 +1,5 @@
-use poise::serenity_prelude::{Context, Error, Message};
-
 use crate::tools::Log;
+use poise::serenity_prelude::{Context, Error, Message};
 
 // Called everytime a message is casted.
 pub async fn on_message(ctx: &Context, msg: &Message) -> Result<(), Error> {

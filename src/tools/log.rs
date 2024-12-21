@@ -1,8 +1,8 @@
+use poise::serenity_prelude::{ChannelId, Context, GuildId, Message, MessageId, UserId};
+
 use std::fs::{self, File, OpenOptions};
 use std::io::{BufRead, BufReader, Error, Write};
 use std::path::Path;
-
-use poise::serenity_prelude::{ChannelId, Context, GuildId, Message, MessageId, UserId};
 
 #[derive(Clone, Debug)]
 pub struct LogEntry {

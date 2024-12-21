@@ -1,8 +1,8 @@
-use std::{fs::File, io::BufReader};
+use poise::serenity_prelude::GuildId;
 
 use anyhow::Error;
-use poise::serenity_prelude::GuildId;
 use serde::Deserialize;
+use std::{fs::File, io::BufReader};
 
 #[derive(Debug, Deserialize)]
 pub struct Config {
