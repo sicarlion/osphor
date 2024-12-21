@@ -1,5 +1,8 @@
 # Osphor
 
+> [!WARNING]
+> This project is still on heavy development. Worse, maybe it's still on prototype. You can check the code if you want to learn how Serenity and Poise works.
+
 Osphor is a Discord Bot that made focused solely for server moderation. It's meant to be lightweight and customizable. Thus minimalizing any bloat commands.
 This bot is written in Rust and made possible by Serenity and Poise Framework.
 
