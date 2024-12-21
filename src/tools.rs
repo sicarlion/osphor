@@ -1,5 +1,5 @@
 pub mod log;
 pub mod config;
 
-pub use log::OsphorLog;
-pub use config::OsphorConf;
+pub use log::Log;
+pub use config::Config;

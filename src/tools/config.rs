@@ -5,7 +5,7 @@ use poise::serenity_prelude::GuildId;
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
-pub struct OsphorConf {
+pub struct Config {
     pub features: Features,
     pub permissions: Permissions,
 }
@@ -25,14 +25,14 @@ pub struct Permissions {
     pub attenuate_perms: bool,
 }
 
-impl OsphorConf {
+impl Config {
     /// Get configuration data from the Guild ID provided. Will return struct containing all the value.
-    pub fn get(guild_id: GuildId) -> Result<OsphorConf, Error> {
+    pub fn get(guild_id: GuildId) -> Result<Config, Error> {
         let file_path = format!("./guild/{}/config.json", guild_id);
         let file = File::open(file_path)?;
         let reader = BufReader::new(file);
 
-        let config: OsphorConf = serde_json::from_reader(reader)?;
+        let config: Config = serde_json::from_reader(reader)?;
 
         Ok(config)
     }

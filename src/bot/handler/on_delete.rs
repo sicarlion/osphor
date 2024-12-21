@@ -1,6 +1,6 @@
 use poise::serenity_prelude::{ChannelId, Context, Error, GuildId, MessageId};
 
-use crate::tools::OsphorLog;
+use crate::tools::Log;
 
 // Called everytime a message is deleted.
 pub async fn on_delete(
@@ -10,7 +10,7 @@ pub async fn on_delete(
     guild_id: &Option<GuildId>,
 ) -> Result<(), Error> {
     if let Some(guild_id) = guild_id {
-        OsphorLog::mark_deleted(&guild_id, &channel_id, &message_id)?;
+        Log::mark_deleted(&guild_id, &channel_id, &message_id)?;
     }
     Ok(())
 }

@@ -1,5 +1,5 @@
 use crate::bot::{InteractionContext, InteractionError};
-use crate::tools::OsphorLog;
+use crate::tools::Log;
 
 #[derive(poise::ChoiceParameter)]
 enum FetchOption {
@@ -38,7 +38,7 @@ impl Fetch {
                 }
 
                 let guild_dir = format!("./guild/{}/messages.log", ctx.guild_id().unwrap());
-                let last = match OsphorLog::fetch(&guild_dir)?.last() {
+                let last = match Log::fetch(&guild_dir)?.last() {
                     Some(entry) => entry.print(),
                     None => {
                         eprintln!("[ERR] No log entries found in the file: {}", guild_dir);
@@ -52,7 +52,7 @@ impl Fetch {
             }
             FetchOption::All => {
                 let guild_dir = format!("./guild/{}/messages.log", ctx.guild_id().unwrap());
-                let osphor_log = OsphorLog::fetch(&guild_dir)?;
+                let osphor_log = Log::fetch(&guild_dir)?;
                 let log = osphor_log.all();
 
                 let mut all = String::new();

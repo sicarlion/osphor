@@ -1,5 +1,5 @@
 use crate::bot::{InteractionContext, InteractionError};
-use crate::tools::OsphorConf;
+use crate::tools::Config;
 use poise::serenity_prelude::CreateEmbed;
 use poise::CreateReply;
 
@@ -20,7 +20,7 @@ impl Test {
             }
         };
 
-        let config = OsphorConf::get(guild_id)?;
+        let config = Config::get(guild_id)?;
 
         ctx.send(CreateReply {
             embeds: vec![

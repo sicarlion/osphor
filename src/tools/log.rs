@@ -16,13 +16,13 @@ pub struct LogEntry {
 }
 
 #[derive(Debug)]
-pub struct OsphorLog {
+pub struct Log {
     entries: Vec<LogEntry>,
 }
 
-impl OsphorLog {
+impl Log {
     // Read and parse the log file
-    pub fn fetch(file_path: &String) -> Result<OsphorLog, Error> {
+    pub fn fetch(file_path: &String) -> Result<Log, Error> {
         let mut entries = Vec::new();
         let file = File::open(file_path)?;
         let reader = BufReader::new(file);
@@ -43,8 +43,8 @@ impl OsphorLog {
             }
         }
 
-        // Return a new OsphorLog with updated entries
-        Ok(OsphorLog { entries })
+        // Return a new Log with updated entries
+        Ok(Log { entries })
     }
 
     // Log a message to the guild log file
