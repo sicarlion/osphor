@@ -17,7 +17,9 @@ impl Bot {
     pub async fn start(bot: Bot) -> ShuttleSerenity {
         // Store all the slash command here. Make sure all module in commands.rs is properly connected.
         let commands_list = vec![
-            Ping::new(), Help::new(), Test::new(), Fetch::new()
+            ping(), help(), 
+            setup(), test(),
+            fetch()
         ];
 
         // Poise framework builder.
@@ -31,6 +33,7 @@ impl Bot {
                             on_message(ctx, new_message).await?;
                         }
                         if let FullEvent::Ready { data_about_bot } = event {
+                            // Call the ready listener when bot is ready
                             on_ready(ctx, data_about_bot).await?;
                         }
                         if let FullEvent::MessageDelete {

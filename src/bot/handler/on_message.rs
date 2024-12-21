@@ -1,6 +1,6 @@
 use poise::serenity_prelude::{Context, Error, Message};
 
-use crate::tools::OsphorLog;
+use crate::tools::Log;
 
 // Called everytime a message is casted.
 pub async fn on_message(ctx: &Context, msg: &Message) -> Result<(), Error> {
@@ -8,7 +8,7 @@ pub async fn on_message(ctx: &Context, msg: &Message) -> Result<(), Error> {
         if msg.author.bot {
             return Ok(())
         }
-        OsphorLog::log(&msg)?
+        Log::log(&msg)?
     }
 
     Ok(())
