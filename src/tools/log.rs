@@ -61,29 +61,26 @@ impl Log {
 
         let log_file_path = format!("{}/messages.log", guild_dir);
 
-        // Trim the file to the last 30 lines if it exists
         if Path::new(&log_file_path).exists() {
             let file = fs::File::open(&log_file_path)?;
             let reader = BufReader::new(file);
             let mut lines: Vec<String> = reader.lines().collect::<Result<_, _>>()?;
 
-            if lines.len() >= 15 {
-                lines.drain(..lines.len() - 14); // Keep the last 29 lines
+            if lines.len() >= 50 {
+                lines.drain(..lines.len() - 49);
             }
-
-            // Rewrite the trimmed content back to the file
+            
             let mut file = fs::File::create(&log_file_path)?;
             for line in &lines {
                 writeln!(file, "{}", line)?;
             }
         }
 
-        // Open the file in append mode and add the new message
         let mut file = OpenOptions::new()
             .create(true)
             .append(true)
             .open(&log_file_path)?;
-
+            
         writeln!(
             file,
             "{}:{}:{}:{}:{}:present:{}",
@@ -124,6 +121,14 @@ impl Log {
 
         // Replace the original log file with the updated one
         fs::rename(&temp_file_path, &log_file_path)?;
+        Ok(())
+    }
+
+    pub fn clean(guild_id: &GuildId) -> Result<(), Error> {
+        let log_file = format!("./guild/{}/messages.log", guild_id);
+        fs::remove_file(&log_file)?;
+        File::create_new(&log_file)?;
+
         Ok(())
     }
 
@@ -204,8 +209,8 @@ impl LogEntry {
 
     pub fn print(&self) -> String {
         format!(
-            "{} {} on https://discord.com/channels/{}/{}/{}: {}",
-            self.author_name, self.status, self.guild_id, self.channel_id, self.id, self.content
+            "<@{}> [{}](https://discord.com/channels/{}/{}/{}) on <#{}>: {}",
+            self.author_id, self.status, self.guild_id, self.channel_id, self.id, self.channel_id, self.content
         )
     }
 }
