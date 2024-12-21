@@ -14,12 +14,10 @@ impl Help {
         ctx.send(CreateReply {
             embeds: vec![
                 CreateEmbed::new()
-                    .title("Help")
-                    .description("Guide Book for using Osphor")
+                    .title("Guide book for using Osphor")
+                    .description("This tutorial will walkthrough on how to setup Osphor on your setup")
                     .fields(vec![
-                        ("fetch", "Retrieve message log from this guild", false),
-                        ("ping", "Check connection status with the Bot", true),
-                        ("help", "Print this menu", true)
+                        ("Jawa", "adalah kuncinya", false)
                     ])
             ],
             ..Default::default()

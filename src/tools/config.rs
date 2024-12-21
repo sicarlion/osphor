@@ -26,7 +26,7 @@ pub struct Permissions {
 }
 
 impl OsphorConf {
-    /// Get config data from the Guild ID provided. Will return struct containing all the value.
+    /// Get configuration data from the Guild ID provided. Will return struct containing all the value.
     pub fn get(guild_id: GuildId) -> Result<OsphorConf, Error> {
         let file_path = format!("./guild/{}/config.json", guild_id);
         let file = File::open(file_path)?;
