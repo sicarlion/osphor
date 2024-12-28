@@ -10,14 +10,10 @@ use poise::CreateReply;
 )]
 pub async fn help(ctx: InteractionContext<'_>) -> Result<(), InteractionError> {
     ctx.send(CreateReply {
-        embeds: vec![
-            CreateEmbed::new()
-                .title("Guide book for using Osphor")
-                .description("This tutorial will walkthrough on how to setup Osphor on your setup")
-                .fields(vec![
-                    ("Jawa", "adalah kuncinya", false)
-                ])
-        ],
+        embeds: vec![CreateEmbed::new()
+            .title("Guide book for using Osphor")
+            .description("This tutorial will walkthrough on how to setup Osphor on your setup")
+            .fields(vec![("Jawa", "adalah kuncinya", false)])],
         ..Default::default()
     })
     .await?;

@@ -7,11 +7,10 @@ use crate::tools::{Exception, Log, Replies};
     rename = "fetch",
     description_localized("en-US", "Fetches messages log from guild"),
     subcommands("last", "peek", "all"),
+    guild_only,
     default_member_permissions = "MANAGE_GUILD"
 )]
-pub async fn fetch(
-    ctx: InteractionContext<'_>,
-) -> Result<(), InteractionError> {
+pub async fn fetch(ctx: InteractionContext<'_>) -> Result<(), InteractionError> {
     Replies::say(&ctx, "Jawa").await?;
     Ok(())
 }
@@ -81,10 +80,10 @@ pub async fn peek(ctx: InteractionContext<'_>) -> Result<(), InteractionError> {
 
     if chunks.is_empty() {
         Replies::error(&ctx, Exception::EmptyLog).await?;
-        return Ok(())
+        return Ok(());
     }
 
-    // Send each chunk as a separate message 
+    // Send each chunk as a separate message
     Replies::say(&ctx, &chunks).await?;
 
     Ok(())
@@ -139,7 +138,7 @@ pub async fn all(ctx: InteractionContext<'_>) -> Result<(), InteractionError> {
     for chunk in chunks {
         Replies::send(&ctx, &chunk).await?;
     }
-    
+
     Replies::say(&ctx, "User have requested full log fetch").await?;
 
     Ok(())

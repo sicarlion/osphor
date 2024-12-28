@@ -69,7 +69,7 @@ impl Log {
             if lines.len() >= 50 {
                 lines.drain(..lines.len() - 49);
             }
-            
+
             let mut file = fs::File::create(&log_file_path)?;
             for line in &lines {
                 writeln!(file, "{}", line)?;
@@ -80,7 +80,7 @@ impl Log {
             .create(true)
             .append(true)
             .open(&log_file_path)?;
-            
+
         writeln!(
             file,
             "{}:{}:{}:{}:{}:present:{}",
@@ -210,7 +210,13 @@ impl LogEntry {
     pub fn print(&self) -> String {
         format!(
             "<@{}> [{}](https://discord.com/channels/{}/{}/{}) on <#{}>: {}",
-            self.author_id, self.status, self.guild_id, self.channel_id, self.id, self.channel_id, self.content
+            self.author_id,
+            self.status,
+            self.guild_id,
+            self.channel_id,
+            self.id,
+            self.channel_id,
+            self.content
         )
     }
 }
