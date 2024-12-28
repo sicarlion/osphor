@@ -16,7 +16,16 @@ pub type InteractionContext<'a> = poise::Context<'a, Data, InteractionError>;
 impl Bot {
     pub async fn start(bot: Bot) -> ShuttleSerenity {
         // Store all the slash command here. Make sure all module in commands.rs is properly connected.
-        let commands_list = vec![ping(), help(), setup(), test(), fetch(), clean()];
+        let commands_list = vec![
+            ping(),
+            help(),
+            setup(),
+            test(),
+            fetch(),
+            clean(),
+            kick(),
+            ban(),
+        ];
 
         // Poise framework builder.
         let framework = poise::Framework::builder()

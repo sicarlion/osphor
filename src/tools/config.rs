@@ -6,23 +6,29 @@ use std::{fs::File, io::BufReader};
 
 #[derive(Debug, Deserialize)]
 pub struct Config {
+    pub general: General,
     pub features: Features,
     pub permissions: Permissions,
 }
 
-#[allow(non_snake_case)]
+#[derive(Debug, Deserialize)]
+pub struct General {
+    pub appeal_link: String,
+    pub banned_words: Vec<String>,
+}
+
 #[derive(Debug, Deserialize)]
 pub struct Features {
-    pub MODERATION_ACTIONS: bool,
-    pub GATEWAY_CHECKING: bool,
-    pub CONTENT_FILTERING: bool,
-    pub MESSAGE_LOGGING: bool,
+    pub moderation_action: bool,
+    pub gateway_checking: bool,
+    pub content_filtering: bool,
+    pub message_logging: bool,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Permissions {
-    pub global_clip: bool,
     pub attenuate_perms: bool,
+    pub global_clip: bool,
 }
 
 impl Config {

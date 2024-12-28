@@ -31,7 +31,9 @@ async fn main(#[shuttle_runtime::Secrets] secret_store: SecretStore) -> ShuttleS
                 .get("TEST_GUILD")
                 .context("[ERR] 'TEST_GUILD' was not found")?
                 .parse()
-                .expect("[ERR] Cannot convert TEST_GUILD to u64. Are you sure it's containing number?"),
+                .expect(
+                    "[ERR] Cannot convert TEST_GUILD to u64. Are you sure it's containing number?",
+                ),
         ),
     };
 

@@ -21,9 +21,7 @@ pub async fn ping(ctx: InteractionContext<'_>) -> Result<(), InteractionError> {
     let elapsed_time = start_time.elapsed().as_millis();
 
     ctx.send(CreateReply {
-        embeds: vec![
-            CreateEmbed::new().description(format!("Pong! It took {}ms!", elapsed_time))
-        ],
+        embeds: vec![CreateEmbed::new().description(format!("Pong! It took {}ms!", elapsed_time))],
         ..Default::default()
     })
     .await?;
